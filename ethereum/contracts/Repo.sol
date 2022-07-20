@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
  
-pragma solidity ^0.8.3;
+pragma solidity ^0.4.17;
  
 contract RepoFactory {
    Repo[] public deployedRepos;
@@ -31,7 +31,7 @@ contract Repo {
    mapping(address => bool) public contributor; //    address[] public contributor;
    uint256 public contributorsCount;
  
-   constructor(uint256 minimum, address creator) payable {
+  function Repo(uint256 minimum, address creator) public payable {
        manager = creator;
        minimumContribution = minimum;
    }
@@ -72,5 +72,3 @@ contract Repo {
        );
    }
 }
- 
-

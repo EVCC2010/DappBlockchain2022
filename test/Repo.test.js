@@ -25,9 +25,8 @@ beforeEach(async () => {
 
     [RepoAddress] = await factory.methods.getDeployedRepos().call();
     Repo = await new web3.eth.Contract(
-        JSON.parse(compiledRepo.interface),
-        RepoAddress
-    );
+        JSON.parse(compiledRepo.interface), 
+        RepoAddress);
 });
 
 describe('Repos', () => {
