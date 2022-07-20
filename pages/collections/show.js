@@ -7,7 +7,7 @@ import ContributeForm from '../../components/ContributeForm';
 import { Link } from '../../routes';
 
 class RepoShow extends Component {
-   /* static async getInitialProps(props) {
+   static async getInitialProps(props) {
         const repo = Repo(props.query.address);
         const summary = await repo.methods.getSummary().call();
         return {
@@ -18,7 +18,7 @@ class RepoShow extends Component {
             contributorsCount: summary[3],
             manager: summary[4]
         };
-    }*/
+    }
 
     renderCards() {
         const {
