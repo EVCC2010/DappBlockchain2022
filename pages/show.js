@@ -6,27 +6,27 @@ import web3 from '../../ethereum/web3';
 import ContributeForm from '../../components/ContributeForm';
 import { Link } from '../../routes';
 
-class RepoShow() extends Component {
-    static async getInitialProps(props) {
+class RepoShow extends Component {
+   /* static async getInitialProps(props) {
         const repo = Repo(props.query.address);
         const summary = await repo.methods.getSummary().call();
         return {
             address: props.query.address,
             minimumContribution: summary[0],
             balance: summary[1],
-            requestsCount: summary[2],
-            approversCount: summary[3],
+            numberOfAudios: summary[2],
+            contributorsCount: summary[3],
             manager: summary[4]
         };
-    }
+    }*/
 
     renderCards() {
         const {
             balance,
             manager,
-            requestsCount,
+            numberOfAudios,
             minimumContribution,
-            approversCount
+            contributorsCount
         } = this.props;
 
         const items = [{
@@ -41,12 +41,12 @@ class RepoShow() extends Component {
             description: 'You must contribute at least this much wei to participate'
         },
         {
-            header: requestsCount,
+            header: numberOfAudios,
             meta: 'Number of Requests',
             description: 'A request tries to withdraw money from the contract'
         },
         {
-            header: approversCount,
+            header: contributorsCount,
             meta: 'Number of approvers',
             description: 'Number of people who already have contributed to this repository'
         },
@@ -76,9 +76,9 @@ class RepoShow() extends Component {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column>
-                            <Link route={`/collections/${this.props.address}/requests`}>
+                            <Link route={`/collections/${this.props.address}/audioUploads`}>
                                 <a>
-                                    <Button primary>View Requests</Button>
+                                    <Button primary>View AudioFiles</Button>
                                 </a>
                             </Link>
                         </Grid.Column>
