@@ -4,7 +4,6 @@ import Repo from '../../../ethereum/repo';
 import web3 from '../../../ethereum/web3';
 import { Link, Router } from '../../../routes';
 import Layout from '../../../components/Layout';
-import axios from "axios";
 
 class AudioNew extends Component {
     state = {
@@ -12,6 +11,7 @@ class AudioNew extends Component {
         description: '',
         owner: '',
         links: '',
+        fileName: '',
         loading: false,
         errorMessage: '',
     };
@@ -22,6 +22,19 @@ class AudioNew extends Component {
         return { address };
     }
 
+      fileChange = e => {
+        this.setState(
+          { file: e.target.files[0], fileName: e.target.files[0].name },
+          () => {
+            console.log(
+              "File chosen --->",
+              this.state.file,
+              console.log("File name  --->", this.state.fileName)
+            );
+          }
+        );
+      };
+  
     onSubmit = async (event) => {
         event.preventDefault();
 
@@ -33,7 +46,7 @@ class AudioNew extends Component {
         try {
             const accounts = await web3.eth.getAccounts();
             await repo.methods
-                .createRequest(
+                .createAudioFile(
                     description,
                     web3.utils.toWei(value, 'ether'),
                     links,
@@ -79,14 +92,18 @@ class AudioNew extends Component {
                             </Button.Content>
                             <Button.Content hidden>Choose a File</Button.Content>
                         </Button>
-                    </Form.Field>
-                    <Form.Field>
-                        <label>File chosen:</label>
-                        <Input
-                            value={this.state.recipient}
-                            onChange={(event) =>
-                                this.setState({ recipient: event.target.value })
-                            }
+                        <input
+                          type="file"
+                          id="file"
+                          hidden
+                         onChange={this.fileChange}
+                        />
+                        <Form.Input
+                          fluid
+                          label="File Chosen: "
+                          placeholder="Use the above bar to browse your file system"
+                          readOnly
+                          value={this.state.fileName}
                         />
                     </Form.Field>
                     <Message error header='Oops!' content={this.state.errorMessage} />
