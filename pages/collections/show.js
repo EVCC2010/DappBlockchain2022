@@ -32,23 +32,23 @@ class RepoShow extends Component {
         const items = [{
             header: manager,
             meta: 'Address of manager',
-            description: 'Manager created this requesto and can request funds',
+            description: 'Manager that created this Audio Collection and will receive the money when Collection is closed',
             style: { overflowWrap: 'break-word' }
         },
         {
             header: minimumContribution,
             meta: 'Minimum Contribution (wei)',
-            description: 'You must contribute at least this much wei to participate'
+            description: 'You must contribute at least this much wei to add and AudioFile'
         },
         {
             header: numberOfAudios,
-            meta: 'Number of Requests',
-            description: 'A request tries to withdraw money from the contract'
+            meta: 'Number of AudioFiles',
+            description: 'Number of AudioFiles added to this Collection'
         },
         {
             header: contributorsCount,
-            meta: 'Number of approvers',
-            description: 'Number of people who already have contributed to this repository'
+            meta: 'Number of contributors',
+            description: 'Number of people who already have contributed to this Collection'
         },
         {
             header: web3.utils.fromWei(balance, 'ether'),

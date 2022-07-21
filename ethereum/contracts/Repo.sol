@@ -71,4 +71,8 @@ contract Repo {
            manager
        );
    }
+   
+   function getAudioFilesCount() public view returns (uint256) {
+      return audioFiles.length;
+    }
 }
