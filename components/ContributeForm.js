@@ -33,7 +33,7 @@ class ContributeForm extends Component {
         return (
             <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
                 <Form.Field>
-                    <label>Contribution to Join</label>
+                    <label>Contribute minimum at least to Join</label>
                     <Input
                         value={this.state.value}
                         onChange={event => this.setState({ value: event.target.value })}

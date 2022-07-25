@@ -35,7 +35,7 @@ describe('Repos', () => {
         assert.ok(Repo.options.address);
     });
 
-    it('marks caller as rhe Repo manager', async () => {
+    it('marks caller as the Repo manager', async () => {
         const manager = await Repo.methods.manager().call();
         assert.equal(accounts[0], manager);
     });

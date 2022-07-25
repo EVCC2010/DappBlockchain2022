@@ -4,6 +4,7 @@ import Repo from '../../../ethereum/repo';
 import web3 from '../../../ethereum/web3';
 import { Link, Router } from '../../../routes';
 import Layout from '../../../components/Layout';
+//import Storage from '../../../external/storage';
 
 class AudioNew extends Component {
     state = {
@@ -34,7 +35,9 @@ class AudioNew extends Component {
           }
         );
       };
-  
+
+
+
     onSubmit = async (event) => {
         event.preventDefault();
 
@@ -43,6 +46,11 @@ class AudioNew extends Component {
 
         this.setState({ loading: true, errorMessage: '' });
 
+        //Store.gogogo();
+        //Storage.uploadAudio(this.state.fileName);
+        //transcription();
+        //updloadMetadata();
+        
         try {
             const accounts = await web3.eth.getAccounts();
             await repo.methods
@@ -104,6 +112,15 @@ class AudioNew extends Component {
                           placeholder="Use the above bar to browse your file system"
                           readOnly
                           value={this.state.fileName}
+                        />
+                    </Form.Field>
+                    <Form.Field>
+                        <Form.Input
+                          fluid
+                          label="Owner Address:  "
+                          placeholder="Type the owner address"
+                          value={this.state.owner}
+                          onChange={(event) => this.setState({ owner: event.target.value })}
                         />
                     </Form.Field>
                     <Message error header='Oops!' content={this.state.errorMessage} />
